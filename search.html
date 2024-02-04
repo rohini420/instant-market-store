@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search Filter Page</title>
+<link rel="stylesheet" href="styles.css">
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap 5 JS Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+
+<div class="search-container">
+  <input type="text" id="searchInput" placeholder="Search for products..." onkeyup="filterItems()">
+  <button class="cart-symbol" id="cartButton">🛒 0</button>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Digital Logic</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Products
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="#">Computers</a></li>
+            <li><a class="dropdown-item" href="#">Tablets</a></li>
+            <li><a class="dropdown-item" href="#">Drones and Cameras</a></li>
+            <li><a class="dropdown-item" href="#">Audio</a></li>
+            <li><a class="dropdown-item" href="#">Mobile</a></li>
+            <li><a class="dropdown-item" href="#">TV & Home Cinema</a></li>
+            <li><a class="dropdown-item" href="#">Wearable Tech</a></li>
+            <!-- More product categories -->
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownServicesLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Price Range
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownServicesLink">
+            <li><a class="dropdown-item" href="#">Up to $50</a></li>
+            <li><a class="dropdown-item" href="#">$50 to $150</a></li>
+            <li><a class="dropdown-item" href="#">$150 to $200</a></li>
+            <li><a class="dropdown-item" href="#">$200 to $250</a></li>
+            <li><a class="dropdown-item" href="#">$250 to $300</a></li>
+            <li><a class="dropdown-item" href="#">$300 to $350</a></li>
+            <li><a class="dropdown-item" href="#">$350 to $400</a></li>
+            <!-- More services -->
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownServicesLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Availability
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownServicesLink">
+            <li><a class="dropdown-item" href="#">Online Only</a></li>
+            <li><a class="dropdown-item" href="#">In Stock</a></li>
+            <li><a class="dropdown-item" href="#">Available at store</a></li>
+            
+            <!-- More services -->
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownServicesLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Product Condition
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownServicesLink">
+            <li><a class="dropdown-item" href="#">New</a></li>
+            <li><a class="dropdown-item" href="#">Refurbished</a></li>
+            <li><a class="dropdown-item" href="#">Used</a></li>
+            
+            <!-- More services -->
+          </ul>
+        </li>
+        <!-- More nav items -->
+      </ul>
+    </div>
+  </nav>
+  
+
+<div id="itemsContainer" class="items-container">
+  <!-- Items to filter -->
+  <div class="item" data-name="Mobile"><img class="productsearch" src="assets/Google Pixel.png" alt="HTML5 Icon">Google Pixel 7 Pro - 5G Android Phone<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+  <div class="item" data-name="Mobile"><img src="assets/Apple phone.png" alt="HTML5 Icon" style="width:128px;height:128px;">Apple iPhone 15 Pro Max Silicone Case with MagSafe<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+  <div class="item" data-name="Computers"><img src="assets/asus.png" alt="HTML5 Icon" style="width:128px;height:128px;">ASUS Vivobook Laptop, 15.6" FHD<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+  <div class="item" data-name="Computers"><img src="assets/macbook.png" alt="HTML5 Icon" style="width:128px;height:128px;">Apple 2022 MacBook Air M2 Chip (13-inch)<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+  <div class="item" data-name="Mobile"><img src="assets/redmi.png" alt="HTML5 Icon" style="width:128px;height:128px;">Xiaomi Redmi 12C 4G LTE (128GB + 4GB)<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+  <div class="item" data-name="Wearable Tech"><img src="assets/iwatch.png" alt="HTML5 Icon" style="width:128px;height:128px;">Apple Watch SE (2nd Gen) Midnight Aluminum<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+<div class="item" data-name="Mobile"><img src="assets/product-image1.png" alt="HTML5 Icon" style="width:128px;height:128px;">Smartphone Z Pixel Max 128GB Unlocked<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+<div class="item" data-name="TV & Home Cinema"><img src="assets/product-image2.png" alt="HTML5 Icon" style="width:128px;height:128px;">Old Vintage TV 7-inch Vintage Portable<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+<div class="item" data-name="Audio"><img src="assets/product-image3.png" alt="HTML5 Icon" style="width:128px;height:128px;">Apple Ipod with connected head phones<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+<div class="item" data-name="Wearable Tech"><img src="assets/product-image4.png" alt="HTML5 Icon" style="width:128px;height:128px;">JBUS GPS Tracker with simple plug-in Plug Into OBD Port<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+<div class="item" data-name="Tablets"><img src="assets/product-image5.png" alt="HTML5 Icon" style="width:128px;height:128px;">Apple iPad Pro 11-inch (2022 128GB, Wi-Fi 6E) 10MP Back Cameras<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+<div class="item" data-name="Printer"><img src="assets/product-image6.png" alt="HTML5 Icon" style="width:128px;height:128px;">HP DeskJet Wireless Color inkjet-printer (All-in-One Printer)<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+<div class="item" data-name="Wearable Tech"><img src="assets/product-image7.png" alt="HTML5 Icon" style="width:128px;height:128px;">Apple AirPods (2nd Generation) Wireless Ear Buds<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+<div class="item" data-name="Tablets"><img src="assets/product-image8.png" alt="HTML5 Icon" style="width:128px;height:128px;">Apple iPad (10th Generation) 64GB,12MP Back Camera<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+<div class="item" data-name="Mobile"><img src="assets/product-image9.png" alt="HTML5 Icon" style="width:128px;height:128px;">Huness Ultra Smartphone Unlocked with 128GB Memory Card<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+<div class="item" data-name="Wearable Tech"><img src="assets/product-image11.png" alt="HTML5 Icon" style="width:128px;height:128px;">Samsung Watch series 9 Sleep Coaching,Health Wellness<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+<div class="item" data-name="Mobile"><img src="assets/product-image12.png" alt="HTML5 Icon" style="width:128px;height:128px;">Samsumg Galaxy Smartphone, Unlocked Android<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+<div class="item" data-name="Computers"><img src="assets/product-image13.png" alt="HTML5 Icon" style="width:128px;height:128px;">Lenovo Laptop 15.6" FHD Display, AMD Ryzen 7320U Processor<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+<div class="item" data-name="Computers"><img src="assets/product-image14.png" alt="HTML5 Icon" style="width:128px;height:128px;">Dell Computer 32GB RAM, 2TB PCIe SSD, Webcam<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+<div class="item" data-name="Drone and Cameras"><img src="assets/product-image15.png" alt="HTML5 Icon" style="width:128px;height:128px;">EAOUSM E58 Drone with Camera for Adults/Kids<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+<div class="item" data-name="Drone and Cameras"><img src="assets/product-image16.png" alt="HTML5 Icon" style="width:128px;height:128px;">DJI - Mini 3 Drone and Remote Control<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+<div class="item" data-name="Audio"><img src="assets/product-image17.png" alt="HTML5 Icon" style="width:128px;height:128px;">Soundcore - Life Note 3i Noise Canceling<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+<div class="item" data-name="Audio"><img src="assets/product-image18.png" alt="HTML5 Icon" style="width:128px;height:128px;">Echo Dot (5th Gen, 2022 release),bigger vibrant sound<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+<div class="item" data-name="Tv and tv Home Cinema"><img src="assets/product-image19.png" alt="HTML5 Icon" style="width:128px;height:128px;">Hisense Class A7 Series TV Compatible with Alexa<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+<div class="item" data-name="Tv and tv Home Cinema"><img src="assets/product-image20.png" alt="HTML5 Icon" style="width:128px;height:128px;">Samsung - 75" Class TV QLED, 600-Nit Dolby Vision<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+<div class="item" data-name="Wearable Tech"><img src="assets/product-image21.png" alt="HTML5 Icon" style="width:128px;height:128px;">Apple Airtag one tap setup,battery included<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+<div class="item" data-name="Wearable Tech"><img src="assets/product-image22.png" alt="HTML5 Icon" style="width:128px;height:128px;">Fitbit Luxe-Fitness and Wellness-Tracker<p class="productprice">$50</p>
+    <button class="add-to-cart-btn" onclick="addToCart('Google Pixel 7 Pro')">Add to Cart</button>
+</div>
+</div>
+  <!-- Add more items here -->
+</div>
+
+<script src="scripts.js"></script>
+</body>
+</html>

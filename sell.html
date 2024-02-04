@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller's Page - Post Your Ad</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Digital Logic - Post Your Product for Sale</h1>
+    <h3>Choose the Category</h3>
+    <!-- Category Selection -->
+    <div class="list-group">
+        <button class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#computerFormModal" data-brand="Computers">
+            Computers
+        </button>
+        <button class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#computerFormModal" data-brand="Tablets">
+            Tablets
+        </button>
+        <button class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#computerFormModal" data-brand="Drones and Cameras">
+            Drones and Cameras
+        </button>
+        <button class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#computerFormModal" data-brand="Audio">
+            Audio
+        </button>
+        <button class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#computerFormModal" data-brand="Mobile">
+            Mobile
+        </button>
+        <button class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#computerFormModal" data-brand="Tv and Home Cinema">
+            TV and Home Cinema
+        </button>
+        <button class="list-group-item list-group-item-action" data-bs-toggle="modal" data-bs-target="#computerFormModal" data-brand="Wearable Tech">
+            Wearable Tech
+        </button>
+        <!-- ... other categories -->
+    </div>
+    
+    <!-- Computer Form Modal -->
+    <div class="modal fade" id="computerFormModal" tabindex="-1" aria-labelledby="computerFormModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="computerFormModalLabel">Enter Details of the Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Form inside the modal -->
+                    <form id="computerForm">
+                        <div class="mb-3">
+                            <label for="brand" class="form-label">Catergory</label>
+                            <input type="text" class="form-control" id="brand" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Brand and Title</label>
+                            <input type="text" class="form-control" id="title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" id="description" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="priceRange" class="form-label">Set a Price</label>
+                            <select class="form-select" id="priceRange" required>
+                                <option value="">Choose a price range</option>
+                                <option value="Up to $50">Up to $50</option>
+                                <option value="$50-$150">$50 - $150</option>
+                                <option value="$150-$200">$150 - $200</option>
+                                <option value="200-250">$200 - $250</option>
+                                <option value="250-300">$250 - $300</option>
+                                <option value="300-350">$300 - $350</option>
+                                <option value="350-400">$350 - $400</option>
+                                <!-- ... other price ranges -->
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Availability" class="form-label">Set Availability</label>
+                            <select class="form-select" id="availabilty" required>
+                                <option value="">Choose Availability</option>
+                                <option value="Online Only">Online Only</option>
+                                <option value="In Stock">In Stock</option>
+                                <option value="Available at Store">Available at Store</option>
+                                
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Productcondition" class="form-label">Set Product Condition</label>
+                            <select class="form-select" id="Productcondition" required>
+                                <option value="">Choose Product Condition</option>
+                                <option value="New">New</option>
+                                <option value="Refurbished">Refurbished</option>
+                                <option value="Used">Used</option>
+                                <!-- ... other price ranges -->
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="images" class="form-label">Upload Images</label>
+                            <input type="file" class="form-control" id="images" multiple required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="state" class="form-label">Location (State)</label>
+                            <input type="text" class="form-control" id="state" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="phone" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Post Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <h2 class="mb-3">Your Posted Products</h2>
+    <div id="postedProducts" class="row">
+        <!-- Posted products will be added here -->
+    </div>
+</div>
+<!-- Include Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Handle form submission
+    function getMarketPrice(priceRange) {
+    // Simulate different market prices for simplicity
+    const marketPrices = {
+        "Computers": 500,
+        "Tablets": 300,
+        "Drones and Cameras": 250,
+        "Audio": 150,
+        "Mobile": 350,
+        "TV and Home Cinema": 600,
+        "Wearable Tech": 200
+    };
+    return marketPrices[priceRange] || "Market price not available";
+}
+
+// Function to confirm with the seller if they want to proceed after seeing the market price
+function confirmSubmissionWithMarketPrice(priceRange) {
+    const marketPrice = getMarketPrice(priceRange);
+    return confirm(`The current market price for ${priceRange} is approximately $${marketPrice}. Do you wish to proceed with the submission?`);
+}
+
+document.getElementById('computerForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    // Get form values
+    const brand = document.getElementById('brand').value;
+
+    if (confirmSubmissionWithMarketPrice(brand)) {
+        // Proceed with form submission if seller confirms
+        submitProductForm();
+    } else {
+        // Optionally handle the case where the seller decides not to proceed
+        console.log('Submission cancelled by the seller.');
+    }
+});
+function submitProductForm() {
+    // Extracted form submission logic here
+    const brand = document.getElementById('brand').value;
+    const title = document.getElementById('title').value;
+    const description = document.getElementById('description').value;
+    const priceRange = document.getElementById('priceRange').value;
+    const availabilty = document.getElementById('availabilty').value;
+    const Productcondition = document.getElementById('Productcondition').value;
+    const state = document.getElementById('state').value;
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+
+    // Handle image files and product element creation as before
+    const imageFiles = document.getElementById('images').files;
+    const productElement = createProductElement(title, description, priceRange, availabilty, Productcondition, state, name, phone, imageFiles);
+
+    // Add the product element to the postedProducts div and reset form
+    document.getElementById('postedProducts').appendChild(productElement);
+    document.getElementById('computerFormModal').modal('hide');
+    document.getElementById('computerForm').reset();
+}
+
+function createProductElement(title, description, priceRange, availabilty, Productcondition, state, name, phone, imageFiles) {
+    const productElement = document.createElement('div');
+    productElement.classList.add('col-md-4');
+
+    for (let i = 0; i < imageFiles.length; i++) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const imageSrc = event.target.result;
+            productElement.innerHTML += `
+                <div class="card mb-4">
+                    <img src="${imageSrc}" class="card-img-top" alt="${title}">
+                    <div class="card-body">
+                        <h5 class="card-title">${title}</h5>
+                        <p class="card-text">${description}</p>
+                        <p class="card-text">Price: ${priceRange}</p>
+                        <p class="card-text">Availability: ${availabilty}</p>
+                        <p class="card-text">Product Condition: ${Productcondition}</p>
+                        <p class="card-text">Location: ${state}</p>
+                        <p class="card-text">Seller: ${name}</p>
+                        <p class="card-text">Phone: ${phone}</p>
+                    </div>
+                </div>
+            `;
+        };
+        reader.readAsDataURL(imageFiles[i]);
+    }
+
+    return productElement;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Attach click event listeners to all category buttons
+    document.querySelectorAll('.list-group-item').forEach(button => {
+        button.addEventListener('click', function() {
+            // Get the brand from the data-brand attribute of the clicked button
+            const brand = this.getAttribute('data-brand');
+            
+            // Set the brand input field in the form
+            document.getElementById('brand').value = brand;
+        });
+    });
+});
+</script>
+<script src="scripts.js"></script>
+</body>
+</html>
